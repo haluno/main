@@ -1,0 +1,123 @@
+@charset "UTF-8";
+*   {box-sizing:border-box;}
+body{
+	font-size:18px;
+	line-height:1.5;
+	font-family:sans-serif;
+	color:#111;
+	background:#f5deb3;
+}
+h1,h2,h3 {margin-top:0; margin-bottom:30px;}
+ul      {margin:0; padding:0; list-style:none;}
+a       {color:#032559; text-decoration:none; }
+p       {margin-top:0; margin-bottom:1em; }
+img     {max-width:100%; }
+figure  {margin:0; }
+adress  {font-style:normal; }
+
+
+/*共通部分のスタイル指定*/
+.header { position:relative; padding:15px 0 0; background:#d2b48; }
+.logo { width:140px; margin:0 auto; }
+
+/* ハンバーガーボタン用チェックボックス*/
+.mtoggle { display:none; }
+/* ハンバーガーボタン*/
+.btn-burger{
+	position:absolute;
+	top:5px;
+	right:10px;
+	z-index:2; /*重なり順。数値が大きいほど上に配置、初期値z-index:0*/
+	display:block;
+	width:44px;
+	height:44px;
+	background-image:url(images/burger.png);
+	background-position:center center;
+	background-size:35px 20px;
+	background-repeat:no-repeat;
+	/*background:url(images/burger.png) center center/35px 20px no-repeat;*/
+	cursor:pointer;
+}
+
+/* メニューが開いている状態のハンバーガーボタンの画像指定*/
+/*~チルダは間接セレクタ。指定した要素の後に登場する要素に適用される*/
+.mtoggle:checked~.bnt-burger{
+    background:url(images/close.png) center center/26px 26px no-repeat;
+}
+/*メニュー*/
+.menu            {background:#ff8c00;}
+.menu-list       {display:none;}
+.menu-list  li   {padding:10px; text-align:center;}
+.menu-list  li:hover {background:#00397f;}
+.menu-list  a        {display:block; color: #fff;}
+
+/*チェックが入ったらメニューを表示する*/
+.mtoggle:checked~.menu .menu-list{display: block;}
+
+/*コンテンツ部分*/
+.section{max-width:1200px; margin:50px auto; padding:0 10px;}
+h2.heading-section{
+	font-size:36px;
+	text-align:center;
+	font-family:serif;
+	color:#032559;
+}
+h3.heading-topic{ font-size:20px; text-align:center; color:#032559; }
+
+/*フッター部分*/
+.footer{
+	padding:50px 0 20px;
+	color:#fff;
+	font-size:14px;
+	text-align:center;
+	background:#ff8c00;
+}
+.footer-logo        {width:240px; margin:auto;}
+.footer-address     {margin:10px 0; }
+.footer-sns         {margin:20px 0; text-align:center;}
+.footer-sns a       {display:inline-block; margin:0 15px; }
+.footer-sns img     {width:50px; }
+.copyright          {margin:0;}
+.copyright small    {font-size:12px; }
+
+/* トップページ大きな画像　*/
+.toppic{
+	height:1200px;
+	background:url("images/img_05.jpg") center center/cover no-repeat;
+}
+.col { margin:0 auto 50px; }
+.col-image img {border-radius:20px; }
+.col p  {margin-bottom:0;}
+
+
+/*------------------------------------------------------
+　幅768px以上のスタイル指定
+-----------------------------------------------------*/
+@media screen and (min-width:768px) {
+	.header { padding:40px 0 0;}
+	.logo  {width:360px;}
+	
+	/* ハンバーガーボタンは非表示にする　*/
+	.btn-burger { display:none; }
+	
+	/*メニューの項目を横並びに切り替える*/
+	.menu {padding:20px 0;}
+	.menu-list {display: flex; width:92%; padding:0; margin:auto; }
+	.menu-list li {
+		flex-grow:1;  /*余白の分配比率の指定（伸びる）　*/
+		padding:0 20px;
+		border-right:1px solid #fff;
+	}
+	.menu-list li:first-child{ border-left:1px solid #fff;}
+	.menu-list li:hover {background:transprent;}
+	.mtoggle:checked~.menu .menu-list{display:flex;}
+	
+	.secton {margin-bottom:100px;}
+	.heading-section {margin-bottom:50px;}
+	
+	.topoic {height:400px; margin-bottom:70px; }
+	.row {display:flex; }
+	.col {flex-basis:30%; }/*幅を約３分の１に*/
+}
+/* CSS Document */
+
